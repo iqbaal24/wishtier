@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
+import 'core/widgets/phone_stage.dart';
 import 'features/shell/main_shell.dart';
 import 'providers/theme_provider.dart';
 
@@ -21,6 +22,11 @@ class WishTierApp extends ConsumerWidget {
       themeMode: themeMode,
       themeAnimationDuration: const Duration(milliseconds: 300),
       themeAnimationCurve: Curves.easeOutCubic,
+      // On desktop the demo is shown inside a handset; on a phone the app is
+      // returned untouched. Sits above the Navigator so routes, sheets and
+      // dialogs stay inside the screen too.
+      builder: (context, child) =>
+          PhoneStage(child: child ?? const SizedBox.shrink()),
       locale: const Locale('id', 'ID'),
       supportedLocales: const [Locale('id', 'ID'), Locale('en')],
       localizationsDelegates: const [
