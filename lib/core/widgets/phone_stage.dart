@@ -213,36 +213,9 @@ class _Stage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: dark
-              ? const [
-                  Color(0xFF323C50),
-                  Color(0xFF1D2433),
-                  Color(0xFF080A0F),
-                ]
-              : const [Color(0xFFF1EDE4), Color(0xFFE0DACC), Color(0xFFD3CCBC)],
-          stops: const [0, 0.55, 1],
-        ),
-      ),
-      child: CustomPaint(
-        painter: _DotField(dark: dark),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              center: const Alignment(0, -0.05),
-              radius: 0.75,
-              colors: [
-                Colors.white.withValues(alpha: dark ? 0.09 : 0.55),
-                Colors.transparent,
-              ],
-            ),
-          ),
-        ),
-      ),
+    return ColoredBox(
+      color: dark ? const Color(0xFF141821) : const Color(0xFFEBE6DA),
+      child: CustomPaint(painter: _DotField(dark: dark)),
     );
   }
 }
